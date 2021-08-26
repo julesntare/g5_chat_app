@@ -1,0 +1,11 @@
+{
+  "name": "g5_chat_app",
+  "version": "1.0.0",
+  "description": "g5 chat application",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "nodemon api/index.js"
+  },
+  "author": "julesntare",
+  "license": "ISC"
+}
