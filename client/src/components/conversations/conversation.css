@@ -1,0 +1,63 @@
+.conversation {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 1px;
+  color: #fff;
+}
+
+.noConversation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  cursor: default;
+}
+
+.conversation.active,
+.conversation:hover {
+  background-color: #c2cbd4;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.conversationImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+.conversation + .bottom-line {
+  float: right;
+  width: 85%;
+  height: 1px;
+  background-color: #ababab;
+  margin-right: 10px;
+}
+
+.conversationName {
+  flex: 3;
+  font-weight: 500;
+}
+
+.conversationTotalUnread {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(31, 25, 25, 0.68);
+  box-shadow: 0px 0px 16px -2px #555;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 500;
+  font-size: 16px;
+}
+.latestConvoMsg {
+  margin-top: 3px;
+  opacity: 0.8;
+  font-style: oblique;
+  font-size: 15px;
+}

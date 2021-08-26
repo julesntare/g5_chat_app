@@ -1,0 +1,251 @@
+.messenger {
+  height: 100vh;
+  display: flex;
+  background: #070c13;
+  color: #fff;
+  overflow-y: auto;
+  position: sticky;
+}
+
+.chatMenu {
+  flex: 3.5;
+  padding-left: 10px;
+  margin-left: 45px;
+}
+
+.ChatContainerTitle {
+  padding: 20px 5px;
+}
+
+.chatSearchBox {
+  position: relative;
+}
+
+.chatMenuInput {
+  width: 100%;
+  padding: 10px 0;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  background: #04080e;
+  color: #fff;
+  border-radius: 6px;
+  -webkit-box-shadow: 0px 0px 7px -4px #111;
+  box-shadow: 0px 0px 7px -4px #111;
+}
+
+.chatMenuInputIcon {
+  height: 36px !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 4px;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -10px rgba(58, 56, 56, 0.68);
+}
+
+.chatBox {
+  flex: 7.5;
+  background: #04080e;
+}
+
+.chatBoxWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.chatBoxTop {
+  background: url("./chat-bg-light.svg");
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+.chatBoxBottom {
+  margin: 10px;
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #757575;
+}
+
+.chatSendIcons {
+  flex: 3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.chatSendIcons > * {
+  color: #0374d1;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.chatSendIcons input {
+  display: none;
+}
+
+.chatSendIcons label {
+  cursor: pointer;
+}
+
+.chatMessageInput {
+  width: 70%;
+  height: 25px;
+  padding-top: 10px;
+  padding-left: 10px;
+  outline: none;
+  background: #070c13;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.chatSubmitButton {
+  width: 40px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #0374d1;
+  color: #fff;
+  color: white;
+}
+.chatSubmitButton[disabled] {
+  background-color: #626669;
+  cursor: not-allowed;
+}
+
+.chatBoxBottom > textarea {
+  flex: 7;
+  resize: none;
+}
+
+.chatMenuWrapper,
+.chatBoxWrapper,
+.chatOnlineWrapper {
+  height: 100%;
+  position: relative;
+}
+
+.chatMenuWrapper {
+  -webkit-box-shadow: 0px 0px 7px -4px #111;
+  box-shadow: 0px 0px 7px -4px #111;
+  margin-right: 10px;
+}
+
+.search-users-containers {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  width: 90%;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(192, 127, 127, 0.68);
+  border-radius: 5px;
+  max-height: 200px;
+  overflow-y: scroll;
+  z-index: 999;
+}
+
+.search-user-item {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(192, 127, 127, 0.68);
+  cursor: pointer;
+}
+
+.search-user-item:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.search-user-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(20, 15, 15, 0.68);
+}
+.search-user-username {
+  margin-left: 5px;
+}
+
+.noConversationContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noConversationImg {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px 3px rgba(104, 101, 101, 0.68);
+  margin-bottom: 20px;
+}
+
+.noConversationDesc {
+  text-align: center;
+}
+
+.noConversationDesc h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.noConversationDesc span {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.chatBoxUserTitle {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(20, 15, 15, 0.68);
+  border-bottom: 1px solid #0b121d;
+}
+
+.chatBoxUserDesc {
+  display: flex;
+  flex-direction: column;
+}
+
+.userStatus {
+  font-size: 12px;
+  margin-top: 5px;
+  font-style: oblique;
+  color: #757575;
+}
+.handleBackCont {
+  display: none;
+}
+.handleBackIcon {
+  cursor: pointer;
+}
+@media screen and (max-width: 860px) {
+  .chatBox {
+    display: none;
+  }
+
+  .handleBackCont {
+    display: block;
+  }
+}
