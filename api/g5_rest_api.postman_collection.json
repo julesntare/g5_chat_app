@@ -1,0 +1,411 @@
+{
+	"info": {
+		"_postman_id": "2b56ee67-1fa9-46a0-ae06-29044971e3b9",
+		"name": "g5_rest_api",
+		"description": "This is the restful api provided by group 5 chat application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "julesntare",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "njigina",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "validone",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "validon@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "jujuju",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/api/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					],
+					"query": [
+						{
+							"key": "firstname",
+							"value": "firstname",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "julesntare@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ju.jo.123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retreive user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjExNDRmYjYzNjRlODczMGM0NDBhYWU1In0sImlhdCI6MTYyOTM3MjQ0NywiZXhwIjoxNjI5Mzc2MDQ3fQ.tPtwWQFYAFsY_T7tjvJ-b7lynZXVfoJYgFJOpJU4HRQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8800/api/users/?userId=61144fb6364e8730c440aae5&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjExNDRmYjYzNjRlODczMGM0NDBhYWU1In0sImlhdCI6MTYyOTM3MjQ0NywiZXhwIjoxNjI5Mzc2MDQ3fQ.tPtwWQFYAFsY_T7tjvJ-b7lynZXVfoJYgFJOpJU4HRQ",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "61144fb6364e8730c440aae5"
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjExNDRmYjYzNjRlODczMGM0NDBhYWU1In0sImlhdCI6MTYyOTM3MjQ0NywiZXhwIjoxNjI5Mzc2MDQ3fQ.tPtwWQFYAFsY_T7tjvJ-b7lynZXVfoJYgFJOpJU4HRQ"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "room5",
+							"type": "text"
+						},
+						{
+							"key": "creator",
+							"value": "3bj3k2b523hbj3jh",
+							"type": "text"
+						},
+						{
+							"key": "members",
+							"value": "61145027364e8730c440aae6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/api/rooms",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"rooms"
+					]
+				},
+				"description": "request to add new chat room"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Room",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "42nj25n2kn25jkn",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/api/rooms/6123b7460a03ba09e82030fc",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"rooms",
+						"6123b7460a03ba09e82030fc"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "send request to remove a specific room"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Rooms by specific User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:8800/api/rooms/member/61144fb6364e8730c440aae5",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"rooms",
+						"member",
+						"61144fb6364e8730c440aae5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/api/rooms/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"rooms",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Rooms by specific Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/api/rooms/61249bbb4c61ca28bcb77a50",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"rooms",
+						"61249bbb4c61ca28bcb77a50"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Room Name",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "third room",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/api/rooms/61249bbb4c61ca28bcb77a59",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"rooms",
+						"61249bbb4c61ca28bcb77a59"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Message to Specific Room",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "message",
+							"value": "yoyo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/api/rooms/sendmessage/6124c1b983a84a2ae84af70a/61144fb6364e8730c440aae5",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"rooms",
+						"sendmessage",
+						"6124c1b983a84a2ae84af70a",
+						"61144fb6364e8730c440aae5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove User From Room",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/api/rooms/removeuser/61249c5d521e4c2ca893e562/61145027364e8730c440aae6",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"rooms",
+						"removeuser",
+						"61249c5d521e4c2ca893e562",
+						"61145027364e8730c440aae6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add User in Specific Room",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/api/rooms/adduser/6124961a5e64ad2924d75451/61144fb6364e8730c440aae5",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"rooms",
+						"adduser",
+						"6124961a5e64ad2924d75451",
+						"61144fb6364e8730c440aae5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

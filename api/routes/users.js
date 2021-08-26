@@ -49,6 +49,9 @@ router.get("/", async (req, res) => {
     const user = userId
       ? await User.findById(userId)
       : await User.findOne({ username: username });
+    if (!user) {
+      res.status(404).json({ msg: "user not found" });
+    }
     const { password, updatedAt, ...others } = user._doc;
     res.status(200).json(others);
   } catch (err) {
