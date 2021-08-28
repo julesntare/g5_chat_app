@@ -5,7 +5,9 @@ const Message = require("../models/Message");
 //new conv
 
 router.post("/", async (req, res) => {
-  const existingConvo = await Conversation.find({ members: { $all: [req.body.senderId, req.body.receiverId] } });
+  const existingConvo = await Conversation.find({
+    members: { $all: [req.body.senderId, req.body.receiverId] },
+  });
 
   const newConversation = new Conversation({
     members: [req.body.senderId, req.body.receiverId],
@@ -24,21 +26,28 @@ router.post("/", async (req, res) => {
 });
 
 //get conv of a user
-
 router.get("/:userId", async (req, res) => {
   try {
     const conversation = await Conversation.find({
       members: { $in: [req.params.userId] },
     });
-    res.status(200).json(conversation);
+    const rooms = await Room.find({
+      $or: [
+        { creator: req.params.userId },
+        {
+          members: {
+            $in: [req.params.userId],
+          },
+        },
+      ],
+    });
+    res.status(200).json({ privateConvo: conversation, rooms: rooms });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 //get total msg of convo
-
-// innocent (get total messages from a specific conversation)
 router.get("/totalMsgsConvo/:convoId", async (req, res) => {
   try {
     let convoData = await Conversation.findById(req.params.convoId);
@@ -66,5 +75,3 @@ router.get("/find/:firstUserId/:secondUserId", async (req, res) => {
 });
 
 module.exports = router;
-
-
