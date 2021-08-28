@@ -105,7 +105,7 @@ router.put("/:id", async (req, res) => {
     if (room) {
       res.status(200).json({ msg: "name changed successfully" });
     } else {
-      res.status(200).json({ msg: "Room Not Found" });
+      res.status(404).json({ msg: "Room Not Found" });
     }
   } catch (err) {
     return res.status(500).json(err);
