@@ -76,17 +76,23 @@ router.get("/totalMsgsConvo/:convoId", async (req, res) => {
 });
 
 // get conv includes two userId
-
-router.get("/find/:firstUserId/:secondUserId", async (req, res) => {
-  try {
-    const conversation = await Conversation.findOne({
-      members: { $all: [req.params.firstUserId, req.params.secondUserId] },
-    });
-    res.status(200).json(conversation);
-  } catch (err) {
-    res.status(500).json(err);
+// vanson (get conversation with all users involved)
+router.get(
+  "/specificConvoUsers/:firstUserId/:secondUserId",
+  async (req, res) => {
+    try {
+      const conversation = await Conversation.findOne({
+        members: { $all: [req.params.firstUserId, req.params.secondUserId] },
+      });
+      const convoMsgs = await Message.find({
+        conversationId: conversation._id,
+      });
+      res.status(200).json({ conversation, messages: convoMsgs });
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
-});
+);
 
 // delete a conversation
 router.delete("/:id", async (req, res) => {
