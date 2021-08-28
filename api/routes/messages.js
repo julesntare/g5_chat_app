@@ -2,13 +2,18 @@ const router = require("express").Router();
 const Message = require("../models/Message");
 
 //add
-
 router.post("/", async (req, res) => {
-  const newMessage = new Message(req.body);
-
   try {
+    const existingConvo = await Conversation.findById(req.body.conversationId);
+    if (!existingConvo || !existingConvo.members.includes(req.body.sender)) {
+      res
+        .status(404)
+        .json({ msg: "conversation not found or user not in participation" });
+      return;
+    }
+    const newMessage = new Message(req.body);
     const savedMessage = await newMessage.save();
-    res.status(200).json(savedMessage);
+    res.status(201).json(savedMessage);
   } catch (err) {
     res.status(500).json(err);
   }
