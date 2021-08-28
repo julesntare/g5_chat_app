@@ -38,10 +38,13 @@ router.get("/:userId", async (req, res) => {
 
 //get total msg of convo
 
-router.post("/totalMsgsConvo", async (req, res) => {
+// innocent (get total messages from a specific conversation)
+router.get("/totalMsgsConvo/:convoId", async (req, res) => {
   try {
-    let convoData = await Conversation.findById(req.body.convoId);
-    const convoMsgs = await Message.find({ conversationId: req.body.convoId });
+    let convoData = await Conversation.findById(req.params.convoId);
+    const convoMsgs = await Message.find({
+      conversationId: req.params.convoId,
+    });
     convoData = { ...convoData._doc, length: convoMsgs.length };
     res.status(200).json(convoData);
   } catch (err) {
@@ -63,3 +66,5 @@ router.get("/find/:firstUserId/:secondUserId", async (req, res) => {
 });
 
 module.exports = router;
+
+
