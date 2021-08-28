@@ -5,23 +5,37 @@ const Message = require("../models/Message");
 //new conv
 
 router.post("/", async (req, res) => {
-  const existingConvo = await Conversation.find({
-    members: { $all: [req.body.senderId, req.body.receiverId] },
-  });
-
-  const newConversation = new Conversation({
-    members: [req.body.senderId, req.body.receiverId],
-  });
-
   try {
-    if (existingConvo.length == 1) {
-      res.status(200).json(existingConvo);
-    } else {
-      const savedConversation = await newConversation.save();
-      res.status(200).json(savedConversation);
+    if (req.body.senderId === req.body.receiverId) {
+      res.status(403).json({ msg: "Can't add same user in one convo" });
+      return;
+    }
+    const senderId = await User.findById(req.body.senderId);
+    const receiverId = await User.findById(req.body.receiverId);
+    if (!senderId || !receiverId) {
+      res.status(403).json({ msg: "One or both Users not found" });
+      return;
+    }
+    const existingConvo = await Conversation.find({
+      members: { $all: [req.body.senderId, req.body.receiverId] },
+    });
+
+    const newConversation = new Conversation({
+      members: [req.body.senderId, req.body.receiverId],
+    });
+
+    try {
+      if (existingConvo.length == 1) {
+        res.status(403).json({ msg: "Conversation already exists" });
+      } else {
+        const savedConversation = await newConversation.save();
+        res.status(200).json(savedConversation);
+      }
+    } catch (err) {
+      res.status(500).json(err);
     }
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ msg: "bad formatted id" });
   }
 });
 
